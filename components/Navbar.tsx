@@ -19,13 +19,14 @@ function Navbar(): JSX.Element {
             </a>
           </Link>
         ) : (
-          <div className="relative border w-12 h-12">
+          <div className="relative flex gap-2">
             <img
               src={user?.photoURL as string}
               alt=""
-              className="object-cover"
+              className="object-cover w-12 h-12"
               referrerPolicy="no-referrer"
-            />
+              />
+              <button onClick={()=> auth.signOut()} className="rounded-md py-2 px-4 bg-red-700 text-white">Sign Out</button>
           </div>
         )}
       </nav>
