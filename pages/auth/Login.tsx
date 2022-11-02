@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../utilities/firebase';
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from 'next/router';
+import {useAuthState} from 'react-firebase-hooks/auth'
 
 const Login = () => {
+  const [user, loading] = useAuthState(auth);
   //sign in with google
   const googleProvider = new GoogleAuthProvider();
   const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard');
+    }
+  })
 
   const googleLogin = async () => {
     try {
@@ -17,6 +25,7 @@ const Login = () => {
       console.log(error)
     }
   }
+
   return (
     <div>
       <h2>Join Today</h2>
