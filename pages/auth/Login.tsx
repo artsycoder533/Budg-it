@@ -2,15 +2,17 @@ import React from 'react';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../utilities/firebase';
 import { FcGoogle } from "react-icons/fc";
+import { useRouter } from 'next/router';
 
 const Login = () => {
   //sign in with google
   const googleProvider = new GoogleAuthProvider();
+  const router = useRouter();
 
   const googleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider)
-      console.log(result.user);
+      if (result.user) router.push('/Dashboard');
     } catch (error) {
       console.log(error)
     }

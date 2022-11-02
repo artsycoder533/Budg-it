@@ -6,7 +6,6 @@ import Image from 'next/image';
 
 function Navbar(): JSX.Element {
   const [user, loading] = useAuthState(auth);
-  console.log('display name-->', user?.displayName)
 
   return (
     <header className=" p-3 border">
@@ -24,7 +23,7 @@ function Navbar(): JSX.Element {
               src={user?.photoURL as string}
               alt=""
               className="object-cover w-12 h-12"
-              referrerPolicy="no-referrer"
+                referrerPolicy="no-referrer"
               />
               <button onClick={()=> auth.signOut()} className="rounded-md py-2 px-4 bg-red-700 text-white">Sign Out</button>
           </div>
