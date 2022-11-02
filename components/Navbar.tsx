@@ -10,7 +10,7 @@ function Navbar(): JSX.Element {
   return (
     <header className=" p-3 border">
       <nav className="flex justify-between items-center max-w-[1200px] mx-auto">
-        <Link href="/">Logo</Link>
+        <Link href="/">Budg.it</Link>
         {!user ? (
           <Link href={"/auth/Login"} legacyBehavior>
             <a className="py-2 px-4 text-md bg-teal-500 text-white rounded-md">
