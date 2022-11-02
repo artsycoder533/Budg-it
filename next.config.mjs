@@ -5,8 +5,10 @@ const nextConfig = {
   images: {
     loader: "akamai",
     path: "",
+    domains: ["lh3.googleusercontent.com"],
   },
-  assetPrefix: "/"
+  // assetPrefix: "/"
+  // assetPrefix: "/Budg-it"
 };
 
 export default nextConfig;
