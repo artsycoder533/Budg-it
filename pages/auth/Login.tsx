@@ -17,14 +17,14 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      router.push("/dashboard");
+      router.push("/assessment");
     }
   }, [user]);
 
   const googleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      if (result.user) router.push("/dashboard");
+      if (result.user) router.push("/assessment");
     } catch (error) {
       console.log(error);
     }

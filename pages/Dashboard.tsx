@@ -13,7 +13,9 @@ const Dashboard = () => {
     }
   }, [user]);
 
-  return <div>Dashboard</div>;
+  return <div>
+  
+  </div>;
 };
 
 export default Dashboard;
