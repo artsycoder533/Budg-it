@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     // loader: "akamai",
-    // path: "",
+    path: "",
     domains: ["lh3.googleusercontent.com"],
   },
   assetPrefix: "/",
