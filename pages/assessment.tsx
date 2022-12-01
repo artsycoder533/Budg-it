@@ -7,7 +7,7 @@ import Form from "../components/Form";
 
 const Assessment = () => {
   const [user, loading] = useAuthState(auth);
-  const [assessmentDone, setAssessmentDone] = useState<boolean>(false)
+  const [assessmentDone, setAssessmentDone] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -19,16 +19,18 @@ const Assessment = () => {
   return (
     <div
       className="
-    flex w-5/6 mx-auto justify-center gap-8 mt-8">
+    flex w-5/6 mx-auto justify-center gap-8 mt-8 border">
       {assessmentDone && <Sidebar />}
-      <div className="w-96 border flex justify-center">
-        {!assessmentDone ? 
+      <div className=" flex justify-center p-8">
+        {!assessmentDone ? (
           <button
             className="rounded-full bg-blue-700 text-white px-5 py-3 text-lg"
             onClick={() => setAssessmentDone(true)}>
             Start Assessment
-          </button> : <Form />
-        }
+          </button>
+        ) : (
+          <Form />
+        )}
       </div>
     </div>
   );
