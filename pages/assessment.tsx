@@ -17,7 +17,7 @@ const Assessment = () => {
   }, [user]);
 
   return (
-    <div
+    <header
       className="
     flex w-5/6 mx-auto justify-center gap-8 mt-8">
       {assessmentDone && <Sidebar />}
@@ -32,7 +32,7 @@ const Assessment = () => {
           <Form />
         )}
       </div>
-    </div>
+    </header>
   );
 };
 

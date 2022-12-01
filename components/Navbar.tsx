@@ -3,22 +3,27 @@ import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from "../utilities/firebase";
 import { FiLogOut } from "react-icons/fi";
+import Image from 'next/image';
 
 function Navbar(): JSX.Element {
-  const [user, loading] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth)
+
+  console.log(user?.photoURL)
 
   return (
-    <header className="">
+    <nav>
       <div className="text-center p-2 bg-blue-700 text-white font-bold">
         <Link href="/">Budg.it</Link>
       </div>
       <nav className="flex max-w-[1200px] mx-auto justify-between p-1">
         {user && (
-          <img
-            src={user?.photoURL as string}
+          <Image
+            src={user.photoURL as string}
             alt="avatar"
             className="object-cover w-12 h-12"
             referrerPolicy="no-referrer"
+            width={100}
+            height={100}
           />
         )}
         {!user ? (
@@ -43,7 +48,7 @@ function Navbar(): JSX.Element {
           </div>
         )}
       </nav>
-    </header>
+    </nav>
   );
 }
 
