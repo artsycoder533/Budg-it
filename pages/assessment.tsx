@@ -19,7 +19,7 @@ const Assessment = () => {
   return (
     <div
       className="
-    flex w-5/6 mx-auto justify-center gap-8 mt-8 border">
+    flex w-5/6 mx-auto justify-center gap-8 mt-8">
       {assessmentDone && <Sidebar />}
       <div className=" flex justify-center p-8">
         {!assessmentDone ? (
