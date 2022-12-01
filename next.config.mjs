@@ -8,7 +8,7 @@ const nextConfig = {
     domains: ["lh3.googleusercontent.com"],
   },
   // assetPrefix: "/",
-  assetPrefix: "/Budg-it"
+  // assetPrefix: "/Budg-it"
 };
 
 export default nextConfig;
