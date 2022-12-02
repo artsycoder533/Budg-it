@@ -8,8 +8,6 @@ import Image from 'next/image';
 function Navbar(): JSX.Element {
   const [user, loading] = useAuthState(auth)
 
-  console.log(user?.photoURL)
-
   return (
     <nav>
       <div className="text-center p-2 bg-blue-700 text-white font-bold">
@@ -28,7 +26,7 @@ function Navbar(): JSX.Element {
         )}
         {!user ? (
           <Link
-            href={"/auth/login"}
+            href={"/login"}
             className="py-2 px-4 text-md bg-teal-500 text-white rounded-md ml-auto">
             Login
           </Link>
