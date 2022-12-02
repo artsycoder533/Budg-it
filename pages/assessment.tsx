@@ -12,7 +12,7 @@ const Assessment = () => {
 
   useEffect(() => {
     if (!user) {
-      router.push("/auth/login");
+      router.push("/login");
     }
   }, [user]);
 
