@@ -3,14 +3,14 @@ import { auth } from "../utilities/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import Sidebar from "../components/Sidebar";
-import PersonalDetailsForm from "../components/PersonalDetailsForm";
+import PersonalDetailsForm from "../components/Forms/PersonalDetailsForm";
 import FormControl from "../components/FormInputs/FormControl";
 PersonalDetailsForm;
 
 const Assessment = () => {
   const [user, loading] = useAuthState(auth);
   const [assessmentDone, setAssessmentDone] = useState<boolean>(false);
-  const [index, setIndex] = useState<number>(0)
+  const [index, setIndex] = useState<number>(0);
   const router = useRouter();
 
   useEffect(() => {
@@ -20,20 +20,20 @@ const Assessment = () => {
   }, [user]);
 
   // control which form is displayed
-  const switchForms = (index: number) => {
-    switch (index) {
-      case 0:
-        return <PersonalDetailsForm />
-      
-    }
-  }
+  const nextForm = () => {
+    setIndex(index + 1);
+  };
+
+  const previousForm = () => {
+    setIndex(index - 1);
+  };
 
   return (
-    <header
+    <div
       className="
     flex w-5/6 mx-auto justify-center gap-8 mt-8">
       {assessmentDone && <Sidebar />}
-      <div className=" flex justify-center p-8">
+      <div className=" flex justify-center flex-col p-8 border-red-600">
         {!assessmentDone ? (
           <button
             className="rounded-full bg-blue-700 text-white px-5 py-3 text-lg"
@@ -41,10 +41,25 @@ const Assessment = () => {
             Start Assessment
           </button>
         ) : (
-          <FormControl index={index} />
+          <div>
+            <FormControl index={index} />
+            <div className="flex justify-between mt-6">
+              <button
+                disabled={index < 1}
+                className="border border-blue-700 rounded-md p-2"
+                onClick={previousForm}>
+                Previous
+              </button>
+              <button
+                className="border border-blue-700 rounded-md p-2"
+                onClick={nextForm}>
+                Next
+              </button>
+            </div>
+          </div>
         )}
       </div>
-    </header>
+    </div>
   );
 };
 
