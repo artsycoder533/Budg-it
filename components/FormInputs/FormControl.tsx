@@ -4,14 +4,17 @@ import PersonalDetailsForm from "../Forms/PersonalDetailsForm";
 
 interface FormControlProps {
   index: number;
+  nextForm: () => void,
+  previousForm: () => void,
 }
 
-function FormControl({ index }: FormControlProps) {
+function FormControl(props: FormControlProps) {
+  const {index, ...rest} = props
   switch (index) {
     case 0:
-      return <PersonalDetailsForm />;
+      return <PersonalDetailsForm {...props} />;
     case 1: 
-      return <IncomeForm />
+      return <IncomeForm {...props} />
     default:
       return null;
   }

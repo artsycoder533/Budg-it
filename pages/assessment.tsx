@@ -42,20 +42,7 @@ const Assessment = () => {
           </button>
         ) : (
           <div>
-            <FormControl index={index} />
-            <div className="flex justify-between mt-6">
-              <button
-                disabled={index < 1}
-                className="border border-blue-700 rounded-md p-2"
-                onClick={previousForm}>
-                Previous
-              </button>
-              <button
-                className="border border-blue-700 rounded-md p-2"
-                onClick={nextForm}>
-                Next
-              </button>
-            </div>
+              <FormControl index={index} nextForm={nextForm} previousForm={previousForm} />
           </div>
         )}
       </div>

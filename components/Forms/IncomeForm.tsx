@@ -3,13 +3,20 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { number } from 'yup/lib/locale';
 import DollarInput from '../FormInputs/DollarInput';
+import ButtonControls from '../ButtonControls';
 
-interface Values {
+type Values = {
   paycheck1: number;
   paycheck2?: number;
 }
 
-function IncomeForm() {
+interface FormProps {
+  nextForm: () => void;
+  previousForm: () => void;
+  index: number;
+}
+
+function IncomeForm({index, nextForm, previousForm}: FormProps) {
   const initialValues = {
     paycheck1: 0,
     paycheck2: 0,
@@ -28,10 +35,15 @@ function IncomeForm() {
         formik => {
           return (
             <Form>
-              <DollarInput name="paycheck1" label="Paycheck 1"/>
-              <DollarInput name="paycheck2" label="Paycheck 2"/>
+              <DollarInput name="paycheck1" label="Paycheck 1" />
+              <DollarInput name="paycheck2" label="Paycheck 2" />
+              <ButtonControls
+                previousForm={previousForm}
+                nextForm={nextForm}
+                index={index}
+              />
             </Form>
-          )
+          );
         }
       }
     </Formik>

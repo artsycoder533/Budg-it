@@ -4,13 +4,20 @@ import * as Yup from "yup";
 import TextInput from "../FormInputs/TextInput";
 import DateInput from "../FormInputs/DateInput";
 import NumberInput from "../FormInputs/NumberInput";
+import ButtonControls from "../ButtonControls";
 
-interface Values {
+type Values = {
   dob: string;
   retirementAge: string;
 }
 
-const PersonalDetailsForm = () => {
+interface FormProps {
+  nextForm: () => void;
+  previousForm: () => void;
+  index: number
+}
+
+const PersonalDetailsForm = ({index, nextForm, previousForm}: FormProps) => {
   const initialValues = {
     dob: "",
     retirementAge: "",
@@ -37,6 +44,7 @@ const PersonalDetailsForm = () => {
               name="retirementAge"
               label="Expected age at retirement"
             />
+            <ButtonControls previousForm={previousForm} nextForm={nextForm} index={index} />
           </Form>
         );
       }}
