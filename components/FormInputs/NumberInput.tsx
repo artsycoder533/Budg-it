@@ -1,5 +1,6 @@
 import React from 'react'
 import CurrencyInput from 'react-currency-input-field'
+import { Field, ErrorMessage } from "formik";
 
 type NumberInputProps = {
   label: string;
@@ -12,7 +13,7 @@ const NumberInput = ({ label, name }: NumberInputProps) => {
       <label htmlFor={name} className="pb-1">
         {label}:
       </label>
-      <CurrencyInput name={name} decimalsLimit={2} prefix="$" className="border p-2 text-base "/>
+      <Field as={CurrencyInput} name={name} decimalsLimit={2} prefix="$" className="border p-2 text-base "/>
     </div>
   );
 }

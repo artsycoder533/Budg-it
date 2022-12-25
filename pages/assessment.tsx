@@ -3,11 +3,14 @@ import { auth } from "../utilities/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import Sidebar from "../components/Sidebar";
-import Form from "../components/Form";
+import PersonalDetailsForm from "../components/PersonalDetailsForm";
+import FormControl from "../components/FormInputs/FormControl";
+PersonalDetailsForm;
 
 const Assessment = () => {
   const [user, loading] = useAuthState(auth);
   const [assessmentDone, setAssessmentDone] = useState<boolean>(false);
+  const [index, setIndex] = useState<number>(0)
   const router = useRouter();
 
   useEffect(() => {
@@ -15,6 +18,15 @@ const Assessment = () => {
       router.push("/login");
     }
   }, [user]);
+
+  // control which form is displayed
+  const switchForms = (index: number) => {
+    switch (index) {
+      case 0:
+        return <PersonalDetailsForm />
+      
+    }
+  }
 
   return (
     <header
@@ -29,7 +41,7 @@ const Assessment = () => {
             Start Assessment
           </button>
         ) : (
-          <Form />
+          <FormControl index={index} />
         )}
       </div>
     </header>

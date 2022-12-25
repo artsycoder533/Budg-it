@@ -1,4 +1,5 @@
 import React from "react";
+import { Field, ErrorMessage } from 'formik'
 
 type DateInputProps = {
   label: string;
@@ -9,7 +10,8 @@ const DateInput = ({ label, name }: DateInputProps) => {
   return (
     <div className="flex flex-col">
       <label htmlFor={name}>{label}</label>
-      <input type="date" name={name} className="border p-2"/>
+      <Field type="date" name={name} id={name} className="border p-2" />
+      <ErrorMessage name={name} component="p" className="text-red-500" />
     </div>
   );
 };
