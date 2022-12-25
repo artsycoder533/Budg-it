@@ -21,6 +21,7 @@ const Assessment = () => {
 
   // control which form is displayed
   const nextForm = () => {
+    //validate form
     setIndex(index + 1);
   };
 

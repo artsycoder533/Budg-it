@@ -15,14 +15,17 @@ function Navbar(): JSX.Element {
       </div>
       <nav className="flex max-w-[1200px] mx-auto justify-between p-1">
         {user && (
-          <Image
-            src={user.photoURL as string}
-            alt="avatar"
-            className="object-cover w-12 h-12"
-            referrerPolicy="no-referrer"
-            width={100}
-            height={100}
-          />
+          <>
+            <Image
+              src={user.photoURL as string}
+              alt="avatar"
+              className="object-cover w-12 h-12"
+              referrerPolicy="no-referrer"
+              width={100}
+              height={100}
+            />
+            <span className="mr-auto">Hello, {user.displayName}!</span>
+          </>
         )}
         {!user ? (
           <Link

@@ -24,7 +24,7 @@ const PersonalDetailsForm = ({index, nextForm, previousForm}: FormProps) => {
   };
 
   const validationSchema = Yup.object({
-    dob: Yup.string().required("Required"),
+    dob: Yup.date().required("Required"),
     retirementAge: Yup.number().positive().integer().required('Required'),
   });
 
@@ -44,7 +44,7 @@ const PersonalDetailsForm = ({index, nextForm, previousForm}: FormProps) => {
               name="retirementAge"
               label="Expected age at retirement"
             />
-            <ButtonControls previousForm={previousForm} nextForm={nextForm} index={index} />
+            <ButtonControls previousForm={previousForm} nextForm={nextForm} index={index} status={!formik.isValid} />
           </Form>
         );
       }}

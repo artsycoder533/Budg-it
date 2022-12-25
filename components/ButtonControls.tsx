@@ -4,21 +4,23 @@ interface ButtonControlProps {
   index: number,
   previousForm: () => void,
   nextForm: () => void,
+  status:boolean
 }
 
-function ButtonControls({index, previousForm, nextForm}: ButtonControlProps) {
+function ButtonControls({index, previousForm, nextForm, status}: ButtonControlProps) {
   return (
     <div className="flex justify-between mt-6">
       <button
         type="button"
         disabled={index < 1}
-        className="border border-blue-700 rounded-md p-2"
+        className="rounded-md p-2 bg-blue-700 text-white"
         onClick={previousForm}>
         Previous
       </button>
       <button
+        disabled={status}
         type="button"
-        className="border border-blue-700 rounded-md p-2"
+        className="border-blue-700 rounded-md p-2  bg-blue-700 text-white"
         onClick={nextForm}>
         Next
       </button>
