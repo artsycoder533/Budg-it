@@ -32,7 +32,7 @@ const Assessment = () => {
     <div
       className="
     flex w-5/6 mx-auto justify-center gap-8 mt-8">
-      {assessmentDone && <Sidebar />}
+      {assessmentDone && <Sidebar selectedIndex={index} />}
       <div className=" flex justify-center flex-col p-8 border-red-600">
         {!assessmentDone ? (
           <button

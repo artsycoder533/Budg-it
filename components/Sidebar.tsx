@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { SlArrowRight } from "react-icons/sl";
+import { number } from "yup/lib/locale";
 
 const formSteps: string[] = [
   "Personal Details",
@@ -11,16 +12,18 @@ const formSteps: string[] = [
   "Goals",
 ];
 
-const Sidebar = () => {
-  const [selected, setSelected] = useState<boolean>(false);
+type SidebarProps = {
+  selectedIndex: number,
+}
+
+const Sidebar = ({selectedIndex}: SidebarProps) => {
   //keep track of steps to know which form to show and which link should be highlighted
   return (
     <div className="w-56 border h-96">
       {formSteps.map((el, index) => (
         <button key={index}
-          className="border p-3 pointer flex items-center gap-2 w-full" onClick=
-          {() => setSelected(!selected)}>
-          {selected && <SlArrowRight className="text-blue-700" />}
+          className="border p-3 pointer flex items-center gap-2 w-full" >
+          {selectedIndex === index && <SlArrowRight className="text-blue-700" />}
           {el}
         </button>
       ))}
