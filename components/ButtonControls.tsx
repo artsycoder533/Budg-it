@@ -1,10 +1,16 @@
+import { FormikErrors } from 'formik';
 import React from 'react'
+
+type Values = {
+  dob: string;
+  retirementAge: string;
+};
 
 interface ButtonControlProps {
   index: number,
   previousForm: () => void,
   nextForm: () => void,
-  status:boolean
+  status: boolean
 }
 
 function ButtonControls({index, previousForm, nextForm, status}: ButtonControlProps) {
@@ -21,7 +27,9 @@ function ButtonControls({index, previousForm, nextForm, status}: ButtonControlPr
         disabled={status}
         type="button"
         className="border-blue-700 rounded-md p-2  bg-blue-700 text-white"
-        onClick={nextForm}>
+        onClick={() => {
+         
+        }}>
         Next
       </button>
     </div>
