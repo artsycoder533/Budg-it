@@ -5,6 +5,7 @@ import TextInput from "../FormInputs/TextInput";
 import DateInput from "../FormInputs/DateInput";
 import NumberInput from "../FormInputs/NumberInput";
 import ButtonControls from "../ButtonControls";
+import subYears from "date-fns/sub";
 
 type Values = {
   dob: string;
@@ -24,8 +25,8 @@ const PersonalDetailsForm = ({ index, nextForm, previousForm }: FormProps) => {
   };
 
   const validationSchema = Yup.object({
-    dob: Yup.date().required("Required"),
-    retirementAge: Yup.number().positive().integer().required("Required"),
+    dob: Yup.date().max(new Date(), "Date of Birth cannot be later than todays date").required("Required"),
+    retirementAge: Yup.number().positive('Age cannot be negative').integer('Age must be an integer').required("Required"),
   });
 
   const onSubmit = (values: Values) => {};
@@ -36,7 +37,6 @@ const PersonalDetailsForm = ({ index, nextForm, previousForm }: FormProps) => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}>
       {(formik) => {
-        console.log("formik object", formik);
         return (
           <Form className="border p-4 flex flex-col gap-4 w-96">
             <h1>Personal Details</h1>
@@ -72,6 +72,9 @@ const PersonalDetailsForm = ({ index, nextForm, previousForm }: FormProps) => {
                     dob: true,
                     retirementAge: true,
                   });
+                  if (formik.isValid) {
+                    nextForm()
+                  }
                 }}>
                 Next
               </button>
