@@ -1,5 +1,5 @@
-import React from "react";
-import { Formik, Form } from "formik";
+import React, { FormEvent } from "react";
+import { Formik, Form, FormikProps } from "formik";
 import * as Yup from "yup";
 import TextInput from "../FormInputs/TextInput";
 import DateInput from "../FormInputs/DateInput";
@@ -29,7 +29,10 @@ const PersonalDetailsForm = ({ index, nextForm, previousForm }: FormProps) => {
     retirementAge: Yup.number().positive('Age cannot be negative').integer('Age must be an integer').required("Required"),
   });
 
-  const onSubmit = (values: Values) => {};
+  const onSubmit =(values: Values) => {
+    nextForm()
+    console.log('form submitted', values)
+  };
 
   return (
     <Formik
@@ -37,6 +40,7 @@ const PersonalDetailsForm = ({ index, nextForm, previousForm }: FormProps) => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}>
       {(formik) => {
+        // console.log(formik)
         return (
           <Form className="border p-4 flex flex-col gap-4 w-96">
             <h1>Personal Details</h1>
@@ -59,7 +63,7 @@ const PersonalDetailsForm = ({ index, nextForm, previousForm }: FormProps) => {
                 Previous
               </button>
               <button
-                type="button"
+                type="submit"
                 disabled={!formik.isValid}
                 className={
                   formik.isValid
@@ -72,9 +76,6 @@ const PersonalDetailsForm = ({ index, nextForm, previousForm }: FormProps) => {
                     dob: true,
                     retirementAge: true,
                   });
-                  if (formik.isValid) {
-                    nextForm()
-                  }
                 }}>
                 Next
               </button>

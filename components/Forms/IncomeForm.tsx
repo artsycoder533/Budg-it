@@ -27,7 +27,9 @@ function IncomeForm({ index, nextForm, previousForm }: FormProps) {
     paycheck2: Yup.number().positive().required("Required"),
   });
 
-  const onSubmit = (values: Values) => {};
+  const onSubmit = (values: Values) => {
+    nextForm();
+  };
 
   return (
     <Formik
@@ -40,12 +42,43 @@ function IncomeForm({ index, nextForm, previousForm }: FormProps) {
           <Form>
             <DollarInput name="paycheck1" label="Paycheck 1" />
             <DollarInput name="paycheck2" label="Paycheck 2" />
-            <ButtonControls
+            {/* <ButtonControls
               previousForm={previousForm}
               nextForm={nextForm}
               index={index}
               status={!formik.isValid}
-            />
+            /> */}
+            <div className="flex justify-between mt-6">
+              <button
+                type="button"
+                disabled={index < 1}
+                className={
+                   "rounded-md p-2 bg-blue-700 text-white"
+                }
+                onClick={previousForm}>
+                Previous
+              </button>
+              <button
+                type="submit"
+                disabled={!formik.isValid}
+                className={
+                  formik.isValid
+                    ? "rounded-md p-2  bg-blue-700 text-white"
+                    : "rounded-md p-2 bg-gray-300 text-white"
+                }
+                onClick={() => {
+                  formik.validateForm();
+                  formik.setTouched({
+                    paycheck1: true,
+                    paycheck2: true,
+                  });
+                  if (formik.isValid) {
+                    nextForm()
+                  }
+                }}>
+                Next
+              </button>
+            </div>
           </Form>
         );
       }}

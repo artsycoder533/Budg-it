@@ -22,11 +22,15 @@ const Assessment = () => {
   // control which form is displayed
   const nextForm = () => {
     //validate form
-    setIndex(index + 1);
+    let counter = index;
+    counter++;
+    setIndex(counter);
   };
 
   const previousForm = () => {
-    setIndex(index - 1);
+    let counter = index;
+    counter--;
+    setIndex(counter);
   };
 
   return (
@@ -43,7 +47,11 @@ const Assessment = () => {
           </button>
         ) : (
           <div>
-              <FormControl index={index} nextForm={nextForm} previousForm={previousForm} />
+            <FormControl
+              index={index}
+              nextForm={nextForm}
+              previousForm={previousForm}
+            />
           </div>
         )}
       </div>
